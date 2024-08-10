@@ -1,0 +1,32 @@
+name: document_scanner_kit
+description: Flutter Document Scanner Plugin that uses MLKit for android and VisionKit for iOS
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ^3.4.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: document_scanner_kit_android
+      ios:
+        default_package: document_scanner_kit_ios
+
+dependencies:
+  flutter:
+    sdk: flutter
+  document_scanner_kit_android:
+    path: ../document_scanner_kit_android
+  document_scanner_kit_ios:
+    path: ../document_scanner_kit_ios
+  document_scanner_kit_platform_interface:
+    path: ../document_scanner_kit_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^6.0.0
