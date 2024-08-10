@@ -26,6 +26,25 @@ Add a String property to the app's Info.plist file with the key [NSCameraUsageDe
 ```
 
 
+
+## Using
+
+```
+import 'package:document_scanner_kit/document_scanner_kit.dart' as DocumentScanner;
+
+// Check Permissions before use
+
+try {
+    final result = await DocumentScanner.scan();
+    if(result != null) {
+        // Do whatever you need with paths.
+    }
+} catch (e) {
+    // Handle Error
+}
+```
+
+
 # document_scanner_kit
 
 [![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
