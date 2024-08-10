@@ -3,9 +3,13 @@ import 'package:flutter_test/flutter_test.dart';
 
 class DocumentScannerKitMock extends DocumentScannerKitPlatform {
   static const mockPlatformName = 'Mock';
+  static const mockScanResult = ['path1', 'path2'];
 
   @override
   Future<String?> getPlatformName() async => mockPlatformName;
+
+  @override
+  Future<List<String>?> scan() async => mockScanResult;
 }
 
 void main() {
@@ -23,6 +27,15 @@ void main() {
         expect(
           await DocumentScannerKitPlatform.instance.getPlatformName(),
           equals(DocumentScannerKitMock.mockPlatformName),
+        );
+      });
+    });
+
+    group('scan', () {
+      test('returns correct paths', () async {
+        expect(
+          await DocumentScannerKitPlatform.instance.scan(),
+          equals(DocumentScannerKitMock.mockScanResult),
         );
       });
     });

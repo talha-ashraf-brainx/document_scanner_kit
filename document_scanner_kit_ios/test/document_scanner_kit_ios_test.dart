@@ -8,6 +8,7 @@ void main() {
 
   group('DocumentScannerKitIOS', () {
     const kPlatformName = 'iOS';
+    const kScanResult = ['path1', 'path2'];
     late DocumentScannerKitIOS documentScannerKit;
     late List<MethodCall> log;
 
@@ -16,11 +17,14 @@ void main() {
 
       log = <MethodCall>[];
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-          .setMockMethodCallHandler(documentScannerKit.methodChannel, (methodCall) async {
+          .setMockMethodCallHandler(documentScannerKit.methodChannel,
+              (methodCall) async {
         log.add(methodCall);
         switch (methodCall.method) {
           case 'getPlatformName':
             return kPlatformName;
+          case 'scan':
+            return kScanResult;
           default:
             return null;
         }
@@ -39,6 +43,15 @@ void main() {
         <Matcher>[isMethodCall('getPlatformName', arguments: null)],
       );
       expect(name, equals(kPlatformName));
+    });
+
+    test('scan returns correct paths', () async {
+      final result = await documentScannerKit.scan();
+      expect(
+        log,
+        <Matcher>[isMethodCall('scan', arguments: null)],
+      );
+      expect(result, equals(kScanResult));
     });
   });
 }

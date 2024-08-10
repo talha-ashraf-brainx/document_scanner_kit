@@ -17,4 +17,9 @@ class DocumentScannerKitIOS extends DocumentScannerKitPlatform {
   Future<String?> getPlatformName() {
     return methodChannel.invokeMethod<String>('getPlatformName');
   }
+
+  @override
+  Future<List<String>?> scan() {
+    return methodChannel.invokeListMethod<String>('scan');
+  }
 }

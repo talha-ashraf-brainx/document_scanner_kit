@@ -14,7 +14,8 @@ abstract class DocumentScannerKitPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static DocumentScannerKitPlatform _instance = MethodChannelDocumentScannerKit();
+  static DocumentScannerKitPlatform _instance =
+      MethodChannelDocumentScannerKit();
 
   /// The default instance of [DocumentScannerKitPlatform] to use.
   ///
@@ -30,4 +31,10 @@ abstract class DocumentScannerKitPlatform extends PlatformInterface {
 
   /// Return the current platform name.
   Future<String?> getPlatformName();
+
+  /// Start the document scanner.
+  ///
+  /// The scanner will be started and the user will be able to scan a document.
+  /// Returns the paths of the scanned document.
+  Future<List<String>?> scan();
 }
