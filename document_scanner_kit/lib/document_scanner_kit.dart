@@ -8,3 +8,9 @@ Future<String> getPlatformName() async {
   if (platformName == null) throw Exception('Unable to get platform name.');
   return platformName;
 }
+
+/// Starts the document scanner.
+Future<List<String>?> scan() async {
+  final scannedDocuments = await _platform.scan();
+  return scannedDocuments;
+}

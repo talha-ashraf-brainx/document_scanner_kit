@@ -21,6 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String? _platformName;
+  List<String>? _scannedImages;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,33 @@ class _HomePageState extends State<HomePage> {
               },
               child: const Text('Get Platform Name'),
             ),
+            const SizedBox(height: 16),
+            if (_scannedImages == null)
+              const SizedBox.shrink()
+            else
+              Column(
+                children: [
+                  for (final path in _scannedImages!) Text(path),
+                ],
+              ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+                onPressed: () async {
+                  if (!context.mounted) return;
+                  try {
+                    final result = await scan();
+                    setState(() => _scannedImages = result);
+                  } catch (error) {
+                    if (!context.mounted) return;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        content: Text('$error'),
+                      ),
+                    );
+                  }
+                },
+                child: const Text('Scan Document')),
           ],
         ),
       ),
