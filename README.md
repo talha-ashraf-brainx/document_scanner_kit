@@ -1,10 +1,20 @@
-# Document Scanner Kit(Under Development)
+# Document Scanner Kit
+
+> Plugin is under development right now.
 
 Flutter plugin thats scan documents with using MLKit for Android and VisionKit for iOS.
 
 ## Project Setup
 
 Follow the steps below to set up your Flutter project on Android and iOS
+
+### Android
+
+#### Requirements
+
+- minSdkVersion: 21
+- targetSdkVersion: 33
+- compileSdkVersion: 34
 
 ### iOS
 
@@ -32,7 +42,7 @@ Add a String property to the app's Info.plist file with the key [NSCameraUsageDe
 ```
 import 'package:document_scanner_kit/document_scanner_kit.dart' as DocumentScanner;
 
-// Check Permissions before use
+// Check Permissions before use for iOS, Android doesn't need camera usage permission.
 
 try {
     final result = await DocumentScanner.scan();
