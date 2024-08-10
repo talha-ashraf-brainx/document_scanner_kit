@@ -1,4 +1,4 @@
-# Document Scanner Kit
+# Document Scanner Kit(Under Development)
 
 Flutter plugin thats scan documents with using MLKit for Android and VisionKit for iOS.
 
