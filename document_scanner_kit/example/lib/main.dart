@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:document_scanner_kit/document_scanner_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -28,51 +30,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text('DocumentScannerKit Example')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_platformName == null)
-              const SizedBox.shrink()
-            else
-              Text(
-                'Platform Name: $_platformName',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () async {
-                if (!context.mounted) return;
-                try {
-                  final result = await getPlatformName();
-                  setState(() => _platformName = result);
-                } catch (error) {
-                  if (!context.mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      content: Text('$error'),
-                    ),
-                  );
-                }
-              },
-              child: const Text('Get Platform Name'),
-            ),
-            const SizedBox(height: 16),
-            if (_scannedImages == null)
-              const SizedBox.shrink()
-            else
-              Column(
-                children: [
-                  for (final path in _scannedImages!) Text(path),
-                ],
-              ),
-            const SizedBox(height: 16),
-            ElevatedButton(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (_platformName == null)
+                const SizedBox.shrink()
+              else
+                Text(
+                  'Platform Name: $_platformName',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              const SizedBox(height: 16),
+              ElevatedButton(
                 onPressed: () async {
                   if (!context.mounted) return;
                   try {
-                    final result = await scan();
-                    setState(() => _scannedImages = result);
+                    final result = await getPlatformName();
+                    setState(() => _platformName = result);
                   } catch (error) {
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -83,8 +59,37 @@ class _HomePageState extends State<HomePage> {
                     );
                   }
                 },
-                child: const Text('Scan Document')),
-          ],
+                child: const Text('Get Platform Name'),
+              ),
+              const SizedBox(height: 16),
+              if (_scannedImages == null)
+                const SizedBox.shrink()
+              else
+                Column(
+                  children: [
+                    for (final path in _scannedImages!) Image.file(File(path)),
+                  ],
+                ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                  onPressed: () async {
+                    if (!context.mounted) return;
+                    try {
+                      final result = await scan();
+                      setState(() => _scannedImages = result);
+                    } catch (error) {
+                      if (!context.mounted) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Theme.of(context).primaryColor,
+                          content: Text('$error'),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Scan Document')),
+            ],
+          ),
         ),
       ),
     );

@@ -38,8 +38,18 @@ class ScannerViewController: UIViewController, VNDocumentCameraViewControllerDel
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
 //        TODO: Save Images
-        let documentTitle = "\(scan.title)-\(scan.pageCount)"
-        result([documentTitle])
+//        TODO: Re-Factor right after the complete
+        var savedPaths: [String] = []
+        for i in 0 ..< scan.pageCount
+        {
+            if let path = saveImage(image: scan.imageOfPage(at: i)) {
+                savedPaths.append(path)
+            } else {
+                print("Image couldn't saved")
+            }
+                
+        }
+        result(savedPaths)
         controller.dismiss(animated: true)
         dismiss(animated: true)
     }
@@ -48,6 +58,35 @@ class ScannerViewController: UIViewController, VNDocumentCameraViewControllerDel
         result(FlutterError(code: "SCAN_FAIL_WITH_ERROR", message: error.localizedDescription, details: error.localizedDescription))
         controller.dismiss(animated: true)
         dismiss(animated: true)
+    }
+    
+    func saveImage(image: UIImage) -> String? {
+//        TODO: Implement ability to define prefix for fileName
+//        TODO: Better Error handling
+//        TODO: Implement ability to save images to the pictures
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return nil
+        }
+        
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return nil
+        }
+        
+        let fileName = UUID().uuidString
+        
+        guard let filePath = directory.appendingPathComponent(fileName + ".jpg") else {
+            return nil
+        }
+        
+        do {
+            try data.write(to: filePath)
+            return filePath.path
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+        
+        
     }
     
     
