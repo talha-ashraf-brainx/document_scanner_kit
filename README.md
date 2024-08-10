@@ -2,7 +2,7 @@
 
 > Plugin is under development right now.
 
-Flutter plugin thats scan documents with using MLKit for Android and VisionKit for iOS.
+Flutter plugin that scans documents with using MLKit for Android and VisionKit for iOS.
 
 ## Project Setup
 
