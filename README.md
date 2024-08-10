@@ -1,3 +1,31 @@
+# Document Scanner Kit
+
+Flutter plugin thats scan documents with using MLKit for Android and VisionKit for iOS.
+
+## Project Setup
+
+Follow the steps below to set up your Flutter project on Android and iOS
+
+### iOS
+
+#### Minimum Version Configuration
+
+Ensure you meet the minimum version requirements to run the application on iOS devices. In the ios/Podfile file, make sure the iOS platform version is at least 13.0:
+
+```
+platform :ios, '13.0'
+```
+
+#### Permission Configuration
+
+Add a String property to the app's Info.plist file with the key [NSCameraUsageDescription](https://developer.apple.com/documentation/bundleresources/information_property_list/nscamerausagedescription) and the value as the description for why your app needs camera access.
+
+```
+<key>NSCameraUsageDescription</key>
+<string>Camera Usage is Required</string>
+```
+
+
 # document_scanner_kit
 
 [![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
