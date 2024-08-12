@@ -89,7 +89,4 @@ class ScannerViewController: UIViewController, VNDocumentCameraViewControllerDel
         
     }
     
-    
-    
-    
 }
