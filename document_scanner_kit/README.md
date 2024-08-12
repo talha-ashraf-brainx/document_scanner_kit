@@ -1,5 +1,6 @@
 # Document Scanner Kit
 
+[![pub package](version_badge)]((https://pub.dev/packages/document_scanner_kit))
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
@@ -67,7 +68,7 @@ try {
 
 
 
-
+[version_badge]: https://img.shields.io/pub/v/document_scanner_kit
 [coverage_badge]: document_scanner_kit/coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
