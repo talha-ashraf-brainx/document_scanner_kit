@@ -55,6 +55,8 @@ try {
     final result = await DocumentScanner.scan();
     if(result != null) {
         // Do whatever you need with paths.
+    } else {
+        // Scan process canceled
     }
 } catch (e) {
     // Handle Error
@@ -64,19 +66,7 @@ try {
 
 
 
-### Integration tests 🧪
 
-Very Good Flutter Plugin uses [fluttium][fluttium_link] for integration tests. Those tests are located 
-in the front facing package `document_scanner_kit` example. 
-
-**❗ In order to run the integration tests, you need to have the `fluttium_cli` installed. [See how][fluttium_install].**
-
-To run the integration tests, run the following command from the root of the project:
-
-```sh
-cd document_scanner_kit/example
-fluttium test flows/test_platform_name.yaml
-```
 
 [coverage_badge]: document_scanner_kit/coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
