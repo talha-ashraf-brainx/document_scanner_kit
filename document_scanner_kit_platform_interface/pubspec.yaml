@@ -2,6 +2,7 @@ name: document_scanner_kit_platform_interface
 description: A common platform interface for the document_scanner_kit plugin.
 version: 0.1.0+1
 publish_to: none
+repository: https://github.com/AhmetSBulbul/document_scanner_kit/tree/main/document_scanner_kit_platform_interface
 
 environment:
   sdk: ^3.4.0
