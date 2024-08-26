@@ -39,7 +39,7 @@ class DocumentScannerKitHandler: MethodChannel.MethodCallHandler, PluginRegistry
                 // SCANNER_MODE_BASE_WITH_FILTER: adds image filters (grayscale, auto image enhancement, etc...)
                 // SCANNER_MODE_FULL(default): adds ML-enabled image cleaning capabilities. This mode will also allow future major features to be automatically added along with Google Play services updates, while the other two modes will maintain their current feature sets and only receive minor refinements.
                 // More info: https://developers.google.com/ml-kit/vision/doc-scanner
-                .setScannerMode(GmsDocumentScannerOptions.SCANNER_MODE_BASE)
+                .setScannerMode(GmsDocumentScannerOptions.SCANNER_MODE_FULL)
                 .setGalleryImportAllowed(true)
                 // TODO: Result format should be configurable
                 .setResultFormats(GmsDocumentScannerOptions.RESULT_FORMAT_JPEG)
