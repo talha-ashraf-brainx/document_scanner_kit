@@ -1,0 +1,29 @@
+name: document_scanner_kit_android
+description: Android implementation of the document_scanner_kit plugin
+version: 0.1.1+1
+repository: https://github.com/AhmetSBulbul/document_scanner_kit/tree/main/document_scanner_kit_android
+
+
+environment:
+  sdk: ^3.4.0
+  flutter: '>=3.0.0'
+
+flutter:
+  plugin:
+    implements: document_scanner_kit
+    platforms:
+      android:
+        package: com.ahmetsbulbul
+        pluginClass: DocumentScannerKitPlugin
+        dartPluginClass: DocumentScannerKitAndroid
+
+dependencies:
+  flutter:
+    sdk: flutter
+  document_scanner_kit_platform_interface: ^0.1.0+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^6.0.0
