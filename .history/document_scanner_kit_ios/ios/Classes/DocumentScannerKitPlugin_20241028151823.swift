@@ -18,10 +18,8 @@ public class DocumentScannerKitPlugin: NSObject, FlutterPlugin, UIApplicationDel
                if UIDevice.current.userInterfaceIdiom == .pad {
             controller.popoverPresentationController?.sourceView = self.view
             controller.modalPresentationStyle = .pageSheet
-        } else {
- scannerVC.modalPresentationStyle = .popover
         }
-             
+              scannerVC.modalPresentationStyle = .popover
               viewController.present(scannerVC, animated: true)
           }
       }
