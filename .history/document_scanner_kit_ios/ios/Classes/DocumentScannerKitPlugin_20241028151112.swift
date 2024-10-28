@@ -15,7 +15,7 @@ public class DocumentScannerKitPlugin: NSObject, FlutterPlugin, UIApplicationDel
           if let viewController = UIApplication.shared.delegate?.window??.rootViewController as? FlutterViewController {
               let scannerVC = ScannerViewController(result: result)
               scannerVC.isModalInPresentation = true
-              scannerVC.modalPresentationStyle = .automatic
+              scannerVC.modalPresentationStyle = .popover
               viewController.present(scannerVC, animated: true)
           }
       }
