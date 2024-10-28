@@ -16,10 +16,12 @@ public class DocumentScannerKitPlugin: NSObject, FlutterPlugin, UIApplicationDel
               let scannerVC = ScannerViewController(result: result)
               scannerVC.isModalInPresentation = true
                if UIDevice.current.userInterfaceIdiom == .pad {
-                    activityViewController.popoverPresentationController?.barButtonItem = barButtonItem
-                }
-              
-              scannerVC.modalPresentationStyle = .popover
+            controller.popoverPresentationController?.sourceView = self.view
+            controller.modalPresentationStyle = .pageSheet
+        } else {
+ scannerVC.modalPresentationStyle = .popover
+        }
+             
               viewController.present(scannerVC, animated: true)
           }
       }
